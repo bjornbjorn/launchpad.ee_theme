@@ -1,0 +1,33 @@
+{embed='launchpad/.header'}
+	<div id="main">
+		<h1>{launchpad_title}</h1>
+		<p>{launchpad_body}</p>
+
+	</div><!-- #main -->
+	<div id="options-wrap">
+		<div id="subscribe-options">
+			<p class="rss-subscribe"><a href="{launchpad_rss_feed}" title="{site_name} RSS feed" rel="alternate" type="application/rss+xml">Subscribe with <img src="{site_url}themes/site_themes/launchpad/images/rss-icon.gif" alt="RSS" /> in your feed reader</a></p>
+
+            {if launchpad_use_feedburner_for_mail == 'y'}
+
+                <form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+                    <p>&nbsp;&nbsp;Enter your email address:</p>
+                    <p><input type="text" name="email"/></p>
+
+                    <input type="hidden" value="" name="uri"/>
+                    <input type="hidden" name="loc" value="en_US"/>
+                    <input type="submit" value="Subscribe" />
+                </form>
+            {if:else}
+                {exp:mailinglist:form list="default"}
+                    <p>&nbsp;&nbsp;Enter your email address:</p>
+                    <p><input type="text" name="email"/></p>
+                    <input type="submit" value="Subscribe" />
+                {/exp:mailinglist:form}
+            {/if}
+
+
+		</div><!-- #subscribe-options -->
+	</div><!-- #options-wrap -->
+
+{embed='launchpad/.footer'}
